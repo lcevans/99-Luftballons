@@ -1,0 +1,83 @@
+<% action = (luftballon.persisted? ? luftballon_url(luftballon): luftballons_url) %>
+<% method = (luftballon.persisted? ? "put" : "post") %>
+<% text = (luftballon.persisted? ? "Update Luftballon" : "Create Luftballon") %>
+
+<% if !!flash[:errors] %>
+	<%flash[:errors].each do |error|%>
+	  Error: <%= error %>
+	  <br>
+	<% end %>
+<% end %>
+
+<form action=<%=action%> method="post">
+	<input type="hidden" name="_method" value=<%=method%>>
+
+	<label for="luftballon_inscription">Inscription</label>
+	<input 
+	  type="text" 
+	  id="luftballon_inscription" 
+	  name="luftballon[inscription]" 
+	  value="<%= luftballon.inscription%>">
+	<br>
+
+	<label for="luftballon_color">Color</label>
+	<select 
+	  id="luftballon_color" 
+	  name="luftballon[color]">
+	  <option></option>
+	  <% Luftballon::BALLON_COLORS.each do |color|%>
+	    <option 
+	      value="<%= color %>"
+	      <%= luftballon.color == color ? "selected" : "" %>>
+	    	<%= color.capitalize%>
+	    </option>
+	  <% end %>
+	</select>
+	<br>
+
+	<% Luftballon::BALLON_GAS_TYPES.each do |type|%>
+	  <label for="<%=type%>"><%=type.capitalize%></label>
+	  <input 
+	    type="radio" 
+	    id="<%=type%>" 
+	    name="luftballon[gas]" 
+	    value="<%=type%>" 
+	    <%= luftballon.gas == type ? "checked" : "" %>>
+	<% end %>
+	<br>
+
+
+	<label for="luftballon_psi">Psi</label>
+	<input 
+	  type="text" 
+	  id= "luftballon_psi" 
+	  name="luftballon[psi]" 
+	  value="<%= luftballon.psi %>">
+	<br>
+
+	<label for="luftballon_origin">Country of Origin</label>
+	<select
+	  id="luftballon_origin"
+	  name="luftballon[origin]">
+	  <option></option>
+	  <% Luftballon::BALLON_ORIGINS.each do |origin| %>
+	    <option 
+	      value="<%=origin%>"
+	    	<%= @luftballon.origin == origin ? "selected" : "" %>>
+	    	<%= origin%>
+	    </option>
+	  <% end %>
+	</select>
+	<br>
+
+	<label for="luftballon_manufacture_date">Manufacture Date</label>
+	<input
+	  type="date"
+	  id="luftballon_manufacture_date"
+	  name="luftballon[manufacture_date]"
+	  value="<%=luftballon.manufacture_date%>"
+	  >
+	<br>
+
+	<input type="submit" value="<%= text %>">
+</form>

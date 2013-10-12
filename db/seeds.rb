@@ -1,7 +1,10 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+Luftballon.create!({inscription: "Death From Above", color: "red", gas: "hydrogen", psi: 120, origin: "USA", manufacture_date: "1980-03-14"})
+Luftballon.create!({inscription: "Peace in Our Time", color: "violet", gas: "air", psi: 160, origin: "JAP", manufacture_date: "1966-04-17"})
+Luftballon.create!({inscription: "Sunny Happy Day", color: "yellow", gas: "helium", psi: 200, origin: "UK", manufacture_date: "1976-06-07"})
+Luftballon.create!({inscription: "Melon", color: "green", gas: "helium", origin: "JAP", psi: 140, manufacture_date: "1999-12-06"})
+Luftballon.create!({inscription: "Sky High", color: "blue", gas: "helium", origin: "USA", psi: 120, manufacture_date: "1991-04-15"})
+Luftballon.create!({inscription: "Fu Manchu", color: "indigo", gas: "helium", origin: "CHN", psi: 220, manufacture_date: "1940-05-24"})
+Luftballon.create!({inscription: "Creamsicle", color: "orange", gas: "air", origin: "USA", psi: 150, manufacture_date: "1988-11-04"})
+Luftballon.create!({inscription: "Rising Sun", color: "red", gas: "helium", origin: "JAP", psi: 170, manufacture_date: "1981-11-18"})
+Luftballon.create!({inscription: "Green Acres", color: "green", gas: "air", origin: "USA", psi: 130, manufacture_date: "1965-03-10"})
+Luftballon.create!({inscription: "The English Channel", color: "blue", gas: "air", origin: "UK", psi: 110, manufacture_date: "1980-03-14"})

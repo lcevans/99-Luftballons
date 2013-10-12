@@ -1,0 +1,20 @@
+<h1><%= @luftballon.inscription%></h1>
+
+<table align="left">
+	<tr>
+		<th>Color</th>
+		<th>Gas Type</th>
+		<th>Psi</th>
+		<th>Origin</th>
+		<th>Manufacture Date</th>
+	</tr>
+	<tr>
+		<% [:color,:gas,:psi,:origin,:manufacture_date].each do |attr| %>
+		  <td><%= @luftballon.send(attr) %> </td>
+		<% end %>
+	</tr>
+</table>
+<br>
+<br>
+<h3> <%=link_to "Edit this Luftballon", edit_luftballon_url(@luftballon)%> </h3>
+<%=link_to "Return to Luftballon Index", luftballons_url%>

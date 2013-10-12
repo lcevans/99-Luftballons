@@ -1,0 +1,7 @@
+<ul>
+	<% @luftballons.each do |luftballon| %>
+	  <li> <%= link_to luftballon.inscription, luftballon_url(luftballon) %> </li>
+	<% end %>
+</ul>
+
+<%= link_to "Create a New Luftballon!", new_luftballon_url%>

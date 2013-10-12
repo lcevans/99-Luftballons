@@ -1,0 +1,2 @@
+module LuftballonsHelper
+end
