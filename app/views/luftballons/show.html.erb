@@ -16,5 +16,9 @@
 </table>
 <br>
 <br>
-<h3> <%=link_to "Edit this Luftballon", edit_luftballon_url(@luftballon)%> </h3>
+<br>
+<%=link_to "Edit this Luftballon", edit_luftballon_url(@luftballon)%>
+<br>
+<%=link_to "Delete this Luftballon", luftballon_url(@luftballon), :method => :delete%>
+<br>
 <%=link_to "Return to Luftballon Index", luftballons_url%>

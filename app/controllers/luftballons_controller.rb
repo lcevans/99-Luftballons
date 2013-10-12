@@ -43,6 +43,8 @@ class LuftballonsController < ApplicationController
 	end
 
 	def destroy
-
+		@luftballon = Luftballon.find(params[:id])
+		@luftballon.destroy
+		redirect_to luftballons_url
 	end
 end
