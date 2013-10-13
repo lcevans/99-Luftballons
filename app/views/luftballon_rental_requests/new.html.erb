@@ -1,0 +1,44 @@
+
+
+<% if !!flash[:errors] %>
+	<%flash[:errors].each do |error|%>
+	  Error: <%= error %>
+	  <br>
+	<% end %>
+<% end %>
+
+<form action=<%=luftballon_rental_requests_url%> method="post">
+
+	<label for="luftballon">Luftballon</label>
+	<select
+	  id="luftballon"
+	  name="luftballon_rental_request[luftballon_id]">
+	  <option></option>
+	  <% Luftballon.all.each do |luftballon|%>
+	    <option
+	      value="<%= luftballon.id %>">
+	        <%= luftballon.inscription %>
+	    </option>
+	  <% end %>
+	</select>
+
+
+	<label for="request_start_date">Start Date</label>
+	<input 
+	  type="date"
+	  id="request_start_date" 
+	  name="luftballon_rental_request[start_date]" 
+	  value="<%= @luftballon_rental_request.start_date%>">
+	<br>
+
+	<label for="request_end_date">End Date</label>
+	<input 
+	  type="date"
+	  id="request_end_date" 
+	  name="luftballon_rental_request[end_date]" 
+	  value="<%= @luftballon_rental_request.end_date%>">
+	<br>
+
+	<input type="submit" value="Make Reservation">
+
+</form>

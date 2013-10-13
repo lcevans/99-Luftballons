@@ -8,3 +8,11 @@ Luftballon.create!({inscription: "Creamsicle", color: "orange", gas: "air", orig
 Luftballon.create!({inscription: "Rising Sun", color: "red", gas: "helium", origin: "JAP", psi: 170, manufacture_date: "1981-11-18"})
 Luftballon.create!({inscription: "Green Acres", color: "green", gas: "air", origin: "USA", psi: 130, manufacture_date: "1965-03-10"})
 Luftballon.create!({inscription: "The English Channel", color: "blue", gas: "air", origin: "UK", psi: 110, manufacture_date: "1980-03-14"})
+
+LuftballonRentalRequest.create!({luftballon_id: 1, start_date: "1990-01-01", end_date: "1995-01-01", status: "APPROVED"})
+LuftballonRentalRequest.create!({luftballon_id: 1, start_date: "1996-01-01", end_date: "1998-01-01", status: "APPROVED"})
+LuftballonRentalRequest.create!({luftballon_id: 1, start_date: "2000-01-01", end_date: "2005-01-01", status: "APPROVED"})
+LuftballonRentalRequest.create!({luftballon_id: 1, start_date: "1998-02-02", end_date: "1999-01-01", status: "PENDING"})
+LuftballonRentalRequest.create!({luftballon_id: 1, start_date: "1985-01-01", end_date: "1987-01-01", status: "DENIED"})
+LuftballonRentalRequest.create!({luftballon_id: 2, start_date: "1990-01-01", end_date: "1995-01-01"})
+

@@ -17,6 +17,13 @@
 <br>
 <br>
 <br>
+Reservations:
+<ul>
+<% LuftballonRentalRequest.where("luftballon_id = ?", @luftballon.id).each do |reservation|%>
+<li><%= reservation.start_date %> ~ <%= reservation.end_date %> <%= reservation.status %></li>
+<% end %>
+</ul>
+
 <%=link_to "Edit this Luftballon", edit_luftballon_url(@luftballon)%>
 <br>
 <%=link_to "Delete this Luftballon", luftballon_url(@luftballon), :method => :delete%>

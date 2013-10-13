@@ -39,6 +39,8 @@ class Luftballon < ActiveRecord::Base
 	validates :gas, :inclusion => BALLON_GAS_TYPES
 	validates :origin, :inclusion => BALLON_ORIGINS
 	validates :psi, :numericality => {only_integer: true}
+
+	has_many :luftballon_rental_requests, :dependent => :destroy
 	
 
 end

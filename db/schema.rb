@@ -11,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131012200342) do
+ActiveRecord::Schema.define(:version => 20131013020507) do
+
+  create_table "luftballon_rental_requests", :force => true do |t|
+    t.integer  "luftballon_id", :null => false
+    t.date     "start_date",    :null => false
+    t.date     "end_date",      :null => false
+    t.string   "status",        :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "luftballon_rental_requests", ["luftballon_id"], :name => "index_luftballon_rental_requests_on_luftballon_id"
 
   create_table "luftballons", :force => true do |t|
     t.string   "inscription",      :null => false
