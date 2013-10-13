@@ -1,4 +1,4 @@
-Willkommen!
+Willkommen,
 
 99-Luftballons is a web app where you can create luftballons with a custom inscription and then lend them out to friends, Wunderbar!
 
