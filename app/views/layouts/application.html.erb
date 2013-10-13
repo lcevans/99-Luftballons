@@ -5,7 +5,7 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
-  Welcome to 99 Luftballons!
+  Willkommen auf 99 Luftballons!
   <br>
   <% if !!current_user %>
     <%= current_user.user_name %> <%= link_to "Log Out", session_url, :method => "delete" %>
