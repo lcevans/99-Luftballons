@@ -57,6 +57,10 @@ class LuftballonRentalRequest < ActiveRecord::Base
   	overlapping_requests.where(:status => "APPROVED")
   end
 
+  def overlapping_pending_requests
+    overlapping_requests.where(:status => "PENDING")
+  end
+
   def no_time_travel
   	errors[:base] << "End date must come after start date" if self.start_date > self.end_date
   end
@@ -66,7 +70,7 @@ class LuftballonRentalRequest < ActiveRecord::Base
   	transaction do
   		self.status = "APPROVED"
   		self.save!
-  		overlapping_requests.each do |request|
+  		overlapping_pending_requests.each do |request|
   			request.status = "DENIED"
   			request.save!
   		end
@@ -76,6 +80,10 @@ class LuftballonRentalRequest < ActiveRecord::Base
   def deny!
   	self.status = "DENIED"
   	self.save!
+  end
+
+  def pending?
+    self.status == "PENDING"
   end
 
   def approved?
