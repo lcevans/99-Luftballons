@@ -1,4 +1,7 @@
 class LuftballonRentalRequestsController < ApplicationController
+
+	before_filter :has_right_to_modify, :only => [:approve, :deny]
+
 	def new
 		@luftballon_rental_request = LuftballonRentalRequest.new
 		render :new
@@ -21,7 +24,7 @@ class LuftballonRentalRequestsController < ApplicationController
 			flash[:notice] = "Approval went through"
 			redirect_to luftballon_url(@luftballon_rental_request.luftballon_id)
 		else
-			flash[:errors] = "Could not approve (this shouldn't have happened though...)"
+			flash[:notice] = "Could not approve (this shouldn't have happened though...)"
 			redirect_to luftballon_url(@luftballon_rental_request.luftballon_id)
 		end
 	end
@@ -32,8 +35,17 @@ class LuftballonRentalRequestsController < ApplicationController
 			flash[:notice] = "Denial went through"
 			redirect_to luftballon_url(@luftballon_rental_request.luftballon_id)
 		else
-			flash[:errors] = "Could not deny (this shouldn't have happened though...)"
+			flash[:notice] = "Could not deny (this shouldn't have happened though...)"
 			redirect_to luftballon_url(@luftballon_rental_request.luftballon_id)
+		end
+	end
+
+	def has_right_to_modify
+		@luftballon_rental_request = LuftballonRentalRequest.find(params[:id])
+		curr_ballon = @luftballon_rental_request.luftballon
+		unless curr_ballon.user_id.nil? || (curr_ballon.user_id == current_user_id)
+			flash[:notice] = "You may only approve/deny requests for your own ballon"
+			redirect_to luftballon_url(curr_ballon)
 		end
 	end
 

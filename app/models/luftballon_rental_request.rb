@@ -19,10 +19,6 @@ class LuftballonRentalRequest < ActiveRecord::Base
 
   belongs_to :luftballon
 
-
-
-
-
   #private
 
   def no_overlapping_requests

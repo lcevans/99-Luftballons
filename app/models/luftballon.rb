@@ -23,7 +23,7 @@ class Luftballon < ActiveRecord::Base
 		"UK"
 	]
 
-	attr_accessible :inscription, :color, :gas, :psi, :origin, :manufacture_date
+	attr_accessible :inscription, :color, :gas, :psi, :origin, :manufacture_date, :user_id
 
 	validates(
 		:inscription,
@@ -41,6 +41,7 @@ class Luftballon < ActiveRecord::Base
 	validates :psi, :numericality => {only_integer: true}
 
 	has_many :luftballon_rental_requests, :dependent => :destroy
+	belongs_to :user
 	
 
 end

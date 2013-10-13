@@ -7,8 +7,11 @@ class CreateLuftballons < ActiveRecord::Migration
     	t.integer :psi, :null => false
     	t.string :origin, :null => false
     	t.date :manufacture_date, :null => false
+      t.integer :user_id
 
       t.timestamps
     end
+
+    add_index :luftballons, :user_id
   end
 end

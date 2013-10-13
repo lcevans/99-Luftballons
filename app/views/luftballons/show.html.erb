@@ -1,3 +1,12 @@
+<% modify_permission = (@luftballon.user_id.nil? || @luftballon.user_id == current_user_id)%>
+
+<% if !!flash[:errors] %>
+	<%flash[:errors].each do |error|%>
+	  Error: <%= error %>
+	  <br>
+	<% end %>
+<% end %>
+
 <h1><%= @luftballon.inscription%></h1>
 
 <table align="left">
@@ -7,11 +16,13 @@
 		<th>Psi</th>
 		<th>Origin</th>
 		<th>Manufacture Date</th>
+		<th>Owner</th>
 	</tr>
 	<tr>
 		<% [:color,:gas,:psi,:origin,:manufacture_date].each do |attr| %>
 		  <td><%= @luftballon.send(attr) %> </td>
 		<% end %>
+		<td><%= !!@luftballon.user ? @luftballon.user.user_name : "None" %></td>
 	</tr>
 </table>
 <br>
@@ -22,7 +33,7 @@ Reservations:
 <% LuftballonRentalRequest.where("luftballon_id = ?", @luftballon.id).each do |reservation|%>
   <li>
 	  <%= reservation.start_date %> ~ <%= reservation.end_date %> <%= reservation.status %>
-	  <% if reservation.pending? %>
+	  <% if reservation.pending? && modify_permission %>
 	    <%= button_to "Approve", approve_luftballon_rental_request_url(reservation) %>
 	    <%= button_to "Deny", deny_luftballon_rental_request_url(reservation) %>
 	  <% end %>

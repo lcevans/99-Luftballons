@@ -6,6 +6,12 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
   Welcome to 99 Luftballons!
+  <br>
+  <% if !!current_user %>
+    <%= current_user.user_name %> <%= link_to "Log Out", session_url, :method => "delete" %>
+  <% else %>
+    <%= link_to "Sign In", new_session_url %>
+  <% end %>
   <hr>
 </head>
 <body>

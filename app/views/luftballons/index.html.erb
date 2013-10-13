@@ -1,6 +1,12 @@
 <ul>
 	<% @luftballons.each do |luftballon| %>
-	  <li> <%= link_to luftballon.inscription, luftballon_url(luftballon) %> </li>
+	  <li> 
+	  	<img 
+	  	  src="/images/<%= luftballon.color %>.jpg" 
+	  	  height=20 
+	  	  width=<%= 20 %>/>
+	  	<%= link_to luftballon.inscription, luftballon_url(luftballon) %> 
+	  </li>
 	<% end %>
 </ul>
 
